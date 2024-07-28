@@ -1,5 +1,6 @@
 # Summary text example
 
-## Set it up
+`$ bin/setup`  
+`$ bin/console`
 
-`$ bin/setup`
+Load ENV variables from `.env`

@@ -1,14 +1,45 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    addressable (2.8.7)
+      public_suffix (>= 2.0.2, < 7.0)
     ast (2.4.2)
+    baran (0.1.12)
+    colorize (1.1.0)
+    dotenv (3.1.2)
+    event_stream_parser (1.0.0)
+    faraday (2.10.0)
+      faraday-net_http (>= 2.0, < 3.2)
+      logger
+    faraday-multipart (1.0.4)
+      multipart-post (~> 2)
+    faraday-net_http (3.1.1)
+      net-http
     json (2.7.2)
+    json-schema (4.3.1)
+      addressable (>= 2.8)
+    langchainrb (0.14.0)
+      baran (~> 0.1.9)
+      colorize (~> 1.1.0)
+      json-schema (~> 4)
+      matrix
+      pragmatic_segmenter (~> 0.3.0)
+      to_bool (~> 2.0.0)
+      zeitwerk (~> 2.5)
     language_server-protocol (3.17.0.3)
     lint_roller (1.1.0)
+    logger (1.6.0)
+    matrix (0.4.2)
+    multipart-post (2.4.1)
+    net-http (0.4.1)
+      uri
     parallel (1.25.1)
     parser (3.3.4.0)
       ast (~> 2.4.1)
       racc
+    pragmatic_segmenter (0.3.23)
+      unicode
+    public_suffix (6.0.1)
     racc (1.8.0)
     rainbow (3.1.1)
     regexp_parser (2.9.2)
@@ -30,6 +61,10 @@ GEM
     rubocop-performance (1.21.1)
       rubocop (>= 1.48.1, < 2.0)
       rubocop-ast (>= 1.31.1, < 2.0)
+    ruby-openai (7.1.0)
+      event_stream_parser (>= 0.3.0, < 2.0.0)
+      faraday (>= 1)
+      faraday-multipart (>= 1)
     ruby-progressbar (1.13.0)
     standard (1.39.2)
       language_server-protocol (~> 3.17.0.2)
@@ -44,13 +79,20 @@ GEM
       lint_roller (~> 1.1)
       rubocop-performance (~> 1.21.0)
     strscan (3.1.0)
+    to_bool (2.0.0)
+    unicode (0.4.4.5)
     unicode-display_width (2.5.0)
+    uri (0.13.0)
+    zeitwerk (2.6.16)
 
 PLATFORMS
   arm64-darwin-23
   ruby
 
 DEPENDENCIES
+  dotenv
+  langchainrb
+  ruby-openai
   standard
 
 BUNDLED WITH

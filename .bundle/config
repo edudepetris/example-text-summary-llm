@@ -1,0 +1,2 @@
+---
+BUNDLE_BUILD__LLAMA_CPP: "--with-opt-dir=/opt/homebrew/"

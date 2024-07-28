@@ -1,4 +1,7 @@
 source "https://rubygems.org"
 
-# gem "rake"
+gem "dotenv"
 gem "standard"
+
+gem "langchainrb"
+gem "ruby-openai"
