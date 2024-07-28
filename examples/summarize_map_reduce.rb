@@ -3,6 +3,7 @@
 require "dotenv/load"
 require "langchain"
 require "openai"
+require "llama_cpp"
 
 path = "documents/article.txt"
 chunker = Langchain::Chunker::RecursiveText
@@ -22,12 +23,12 @@ def summarize_chunk_prompt(chunk_number, total_chunks, text)
   )
 end
 
-llm = Langchain::LLM::OpenAI.new(api_key: ENV["OPENAI_API_KEY"])
+# llm = Langchain::LLM::OpenAI.new(api_key: ENV["OPENAI_API_KEY"])
+llm = Langchain::LLM::Ollama.new(default_options: {chat_completion_model_name: "llama3.1"})
 
 summaries = data_in_chunks.map.with_index(1) do |chunk, index|
   text = summarize_chunk_prompt(index, data_loaded.chunks.size, chunk.text)
-
-  llm.chat(messages: [{role: "user", content: text}]).completion
+  llm.chat(messages: [{role: "user", content: text}]).chat_completion
 end
 
 def final_summary_prompt(summaries:)
@@ -43,7 +44,6 @@ def final_summary_prompt(summaries:)
 end
 
 joined_summaries = summaries.join("\n\n")
-
 combine_summaries = final_summary_prompt(summaries: joined_summaries)
 
-puts llm.chat(messages: [{role: "user", content: combine_summaries}]).completion
+puts llm.chat(messages: [{role: "user", content: combine_summaries}]).chat_completion
