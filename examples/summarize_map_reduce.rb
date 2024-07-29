@@ -27,7 +27,7 @@ end
 llm = Langchain::LLM::Ollama.new(default_options: {chat_completion_model_name: "llama3.1"})
 
 summaries = data_in_chunks.map.with_index(1) do |chunk, index|
-  text = summarize_chunk_prompt(index, data_loaded.chunks.size, chunk.text)
+  text = summarize_chunk_prompt(index, data_in_chunks.size, chunk.text)
   llm.chat(messages: [{role: "user", content: text}]).chat_completion
 end
 
