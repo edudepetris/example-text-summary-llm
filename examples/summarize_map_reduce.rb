@@ -8,7 +8,7 @@ require "llama_cpp"
 path = "documents/article.txt"
 chunker = Langchain::Chunker::RecursiveText
 
-data_loaded = Langchain::Loader.load(path, chunker: chunker)
+data_loaded = Langchain::Loader.new(path, chunker: chunker).load
 data_in_chunks = data_loaded.chunks(chunk_size: 512, chunk_overlap: 80)
 
 def summarize_chunk_prompt(chunk_number, total_chunks, text)
