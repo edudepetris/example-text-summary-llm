@@ -30,7 +30,7 @@ messages = [
       {
         type: "text",
         text: "Extract the text from the image below and provide it without any additional explanations " \
-              "or introductory ephrases."
+              "or introductory phrases."
       },
       {
         type: "image_url",
